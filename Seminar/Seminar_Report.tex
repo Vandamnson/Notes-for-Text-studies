@@ -1,0 +1,241 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{parskip}
+
+\definecolor{linknavy}{HTML}{1A4FA0}
+\hypersetup{
+  colorlinks=true,
+  urlcolor=linknavy,
+  pdftitle={Seminar Report -- Polynomials and High-Dimensional Spheres},
+  pdfauthor={Vandan Pokal}
+}
+
+\title{Seminar Report \\[2pt]
+       \large Polynomials and High-Dimensional Spheres \\
+       (talk by Prof.\ Ambar Sengupta)}
+\author{Vandan Pokal}
+\date{December 7, 2024}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+
+This report is on the talk \emph{Polynomials and High-Dimensional Spheres} given
+by Prof.\ Ambar Sengupta of the University of Connecticut on November 12, 2024.
+
+The talk opened with a brief historical primer and was organised into four
+parts: Gaussian integration and spherical integration; harmonic polynomials
+and operators on polynomial spaces; Hermite limits over large spheres; and the
+spherical Laplacian in higher dimensions.
+
+Three key results were highlighted. First, the spherical Laplacian converges to
+the Hermite differential operator:
+\[
+  \lim_{N\to\infty} \Delta_{S^{N-1}(\sqrt{N})}
+  \;=\; \sum_{i=1}^{\infty}\bigl(\partial_i^{\,2} - X_i\,\partial_i\bigr).
+\]
+Second, Gegenbauer polynomials converge to Hermite polynomials:
+\[
+  \lim_{N\to\infty} q_m(\sqrt{N};X)
+  \;=\; \lim_{N\to\infty} C_m^{(N-2)/2}\!\bigl(X/\sqrt{N}\bigr)
+  \;=\; H_m(X),
+\]
+where $q_m(\sqrt{N}; X)$ coincides with a zonal harmonic polynomial on the
+sphere $S^{N-1}(\sqrt{N})$. Third, Gaussian integration arises as the limit of
+spherical integration:
+\[
+  \langle p, q\rangle_{L^2(\mathbb{R}^\infty,\,\mu)}
+  \;=\; \lim_{N\to\infty}
+  \langle p, q\rangle_{L^2(S^{N-1}(\sqrt{N}),\,\bar{\sigma})},
+\]
+where $p, q \in \mathcal{P}_k$ are viewed in $\mathbb{R}^N$.
+
+This third result is remarkable: it simplifies the infinite-dimensional
+spherical Laplacian --- which is already cumbersome in finite dimensions --- to
+a tractable and concise Hermite differential operator. The use of rotation
+generators, the quadratic Casimir, and the restriction--projection map onto the
+sphere (which produces a unique harmonic polynomial) was particularly
+intuitive. One motivation mentioned in the talk lies in statistical mechanics,
+where the total kinetic energy of a system can be written as a function of
+velocities indexed by particles. As the number of particles grows, the total
+kinetic energy becomes increasingly difficult to handle directly, and the
+results of this talk offer a way to simplify these kinds of problems.
+
+The report below summarises each part of the talk. It draws on a careful
+reading of the accompanying paper by Amy Peterson and Ambar Sengupta of the
+University of Connecticut.
+
+\section*{Gaussian Integration as the Limit of Spherical Integration}
+
+The plan of attack in this part was first to establish a relation between the
+spherical integral of a homogeneous (Borel-measurable) polynomial function and
+the corresponding Gaussian integral. The relation is intuitive: the Gaussian
+integral over $\mathbb{R}^N$ can be written as a coefficient times the integral
+of the same function over the unit sphere. Explicitly, the coefficient is
+\[
+  A_{d,N} \;=\; 2^d \,\frac{\Gamma\!\left(\frac{d+N}{2}\right)}{\Gamma\!\left(\frac{N}{2}\right)},
+\]
+where $d$ is the degree of the function. The $L^2$ pairing on the sphere is
+then related to the Gaussian $L^2$ pairing by
+\[
+  a_{d,N}\,\langle p, q\rangle_{L^2(S^{N-1},\,\bar{\sigma})}
+  \;=\; \langle p, q\rangle_{L^2(\mathbb{R}^N,\,\mu)},
+\]
+where
+\[
+  a_{d,N} \;=\; \prod_{j=1}^{d}\!\left(1 + \frac{2j-1}{N}\right)
+  \qquad\text{and}\qquad d \;=\; \frac{d_p + d_q}{2}.
+\]
+This can be shown straightforwardly by polar disintegration and simplification
+via the Gamma function.
+
+The interesting consequence is that for $p, q \in \mathcal{P}_k$ with $k < N$,
+the spherical $L^2$ pairing forms an inner product on $\mathcal{P}_k$. Since
+$\mathcal{P}_k = \bigoplus_{d=0}^{\infty} \mathcal{P}^{d}$ and
+$a_{d,N} \xrightarrow{N\to\infty} 1$, we obtain
+\[
+  \lim_{N\to\infty}
+  \langle p, q\rangle_{L^2(S^{N-1},\,\bar{\sigma})}
+  \;=\; \langle p, q\rangle_{L^2(\mathbb{R}^\infty,\,\mu)}.
+\]
+
+\section*{Harmonic Polynomials and Operators on Polynomial Spaces}
+
+This part was dedicated to developing the relevant operators and their actions
+on polynomial spaces.
+
+If we endow the polynomial space $\mathcal{P}$ with a Hermite inner product,
+then the adjoint of $\partial_j$ is simply multiplication by $X_j$, where $X_j$
+is the corresponding variable. It follows easily that the adjoint of $\Delta_N$
+is multiplication by $\|X\|^2 = X_1^2 + \cdots + X_N^2$.
+
+Since $\Delta_N : \mathcal{P}_N^{d} \to \mathcal{P}_N^{d-2}$ is a linear
+operator, we can split
+\[
+  \mathcal{P}_N^{d}
+  \;=\; \ker \Delta_N \;\oplus\; \|X\|^2 \mathcal{P}_N^{d-2}
+  \;=\; \mathcal{H}_N^{d} \;\oplus\; \|X\|^2 \mathcal{P}_N^{d-2}.
+\]
+This extends naturally to $\mathcal{P}_N^{\le d}$. Thus, for any
+$p \in \mathcal{P}_N$, we have $p = p_0 + \|X\|^2 q$ with $p_0 \in \mathcal{H}_N$
+and $q \in \mathcal{P}_N$. More generally, any $p \in \mathcal{P}_N^{\le d}$ can
+be expanded as
+\[
+  p \;=\; p_0 \;+\; \|X\|^2 p_1 \;+\; \cdots \;+\; \|X\|^{2s}\, p_s,
+\]
+where $p_j \in \mathcal{H}_N^{\le d - 2j}$.
+
+The operators $L_a$ (which generates a unique harmonic polynomial), $M_{jk}$
+and $\|M\|^2$, together with their respective algebraic properties, were then
+developed. These tools were used to derive zonal spherical harmonics. By
+definition, a zonal harmonic is a harmonic polynomial that is invariant under
+all rotations fixing one vector. To simplify the algebra, we may assume
+$t = (1, 0, 0, \ldots, 0)$, since any vector can be obtained from $t$ by scaling
+and rotation. If $p \in \mathcal{P}_N$ is invariant under all rotations
+preserving a given direction, then $p = q(a; X)$ for all $x \in S^{N-1}(a)$.
+On the sphere $L_a p = L_a q(a;X)$, and $L_a q(a;X) \in \mathcal{H}_N$ is
+homogeneous. Because this polynomial is invariant under rotations preserving a
+direction, harmonic, and homogeneous, it is a zonal harmonic. This is how zonal
+harmonics may be generated, with the distinction that when restricted to the
+sphere $q(a; X)$ is itself a zonal harmonic. Concretely,
+\[
+  C_m^{(N-2)/2}\!\bigl(X/a\bigr) \;=\; q_m(a; X)
+\]
+when restricted via $L_a$. This identity is used later in conjunction with
+orthogonality under $\langle\cdot,\cdot\rangle_{S^{N-1}(a)}$ to obtain the
+Hermite limit.
+
+Since $\langle\cdot,\cdot\rangle_{a,N}$ is an inner product on $\mathcal{P}_k$
+when $k < N$, the adjoints of the operators in use can be found by appealing
+to the earlier relation between spherical and Gaussian integration. The
+properties of these operators are then used to show that $\mathcal{H}_N^{m}$
+is orthogonal to $\mathcal{H}_N^{n}$ when $m \ne n$. From this orthogonality of
+the zonal harmonics, one derives $q_m(a; X_1)$, monic with $q_0(X_1) = 1$,
+satisfying
+\[
+  q_m(a; X_1) \;=\; (I - P_{a,N})\, X_1^{m},
+\]
+where $P_{a,N}$ is the projection from $\mathcal{P}_N^{\le m}$ onto
+$\mathcal{P}_N^{\le m - 1}$ with respect to
+$\langle\cdot,\cdot\rangle_{a,N}$. Furthermore, applying Gram--Schmidt to
+$1, X, X^2, \ldots$ under this inner product produces the zonal harmonics
+directly.
+
+\section*{Hermite Limits}
+
+In this part the Gaussian $L^2$ inner product was revisited. The projection
+$P_N^{\prime\,\le d} : \mathcal{P}_N^{\le d} \to \mathcal{P}_N^{\le d - 1}$
+extends to all of $\mathcal{P}^{\le d}$, since the restriction of the
+projection in $M$ variables to $\mathcal{P}_N^{\le d}$ agrees with the
+projection in $N$ variables.
+
+Using this, Hermite polynomials are produced from monomials:
+\[
+  \bigl(1 - P^{\prime\,\le d}\bigr)\bigl(X_1^{m_1}\!\cdots X_N^{m_N}\bigr)
+  \;=\; H_{m_1}(X_1) \cdots H_{m_N}(X_N),
+\]
+with $m_1 + \cdots + m_N = d$.
+
+Using the fact that if a sequence of inner products
+$\langle\cdot,\cdot\rangle_n \to \langle\cdot,\cdot\rangle$, then the
+orthogonal projections $P_n$ onto a fixed proper subspace converge to the
+projection $P$ under the limiting inner product, and combining this with the
+limiting relation between the Gaussian and spherical inner products from the
+first part, we obtain
+\[
+  \lim_{N\to\infty}\!\bigl(1 - P_{k,N}^{\le d}\bigr)\bigl(X_1^{m_1} \cdots X_k^{m_k}\bigr)
+  \;=\; \lim_{N\to\infty}\!\bigl(1 - P^{\prime\,\le d}\bigr)\bigl(X_1^{m_1} \cdots X_k^{m_k}\bigr)
+  \;=\; H_{m_1}(X_1) \cdots H_{m_k}(X_k).
+\]
+The limiting relation stated in the introduction between zonal harmonics,
+Gegenbauer polynomials, and Hermite polynomials then follows.
+
+\section*{Spherical Laplacian}
+
+In this part the properties of the spherical Laplacian were discussed first.
+The operator $\Delta_{N-1,a}$ acts on $p \in \mathbb{C}[X_1, \ldots, X_n]$ in
+two cases. First, when $n \le N$,
+\[
+  \Delta_{N-1,a} \;=\; \frac{1}{a^2}\,\|M\|^2,
+\]
+and second, when $n > N$,
+\[
+  \Delta_{N-1,a}\, p \;=\; \frac{1}{a^2}\,\|M\|^2 p \;=\; q_{\min},
+\]
+where $q_{\min} \in \mathbb{C}[X_1, \ldots, X_n]$ is the unique minimal
+representative modulo the ideal $\mathcal{Z}_N(a)$ of polynomial multiples of
+$\bigl(\|X\|^2 - a^2\bigr)$. This is demonstrated by exploiting the
+self-adjointness of the spherical Laplacian with respect to
+$\langle\cdot,\cdot\rangle_{a,N}$, together with linearity. Examining the
+action on monomials in the limit $N \to \infty$, one finds that
+\[
+  \Delta_{N-1,\sqrt{N}}
+  \;\longrightarrow\;
+  \sum_{i=1}^{\infty}\bigl(\partial_i^{\,2} - X_i\,\partial_i\bigr)
+\]
+for any polynomial in $\mathcal{P}_N^{\le m}$.
+
+\section*{Remarks}
+
+Both the talk and the accompanying paper were straightforward to follow and
+genuinely intuitive, thanks to the systematic use of operators on polynomial
+spaces.
+
+\section*{References}
+
+Peterson, A., \& Sengupta, A.\,N. (2019).
+\emph{Polynomials and High-Dimensional Spheres}.
+\href{https://arxiv.org/abs/1903.07697}{arXiv:1903.07697 [math.MP]}.
+
+\end{document}

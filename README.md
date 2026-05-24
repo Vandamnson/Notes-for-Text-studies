@@ -7,6 +7,9 @@ reading of pure-math textbooks.
 
 - [`Algebra/`](Algebra/) — Dummit & Foote *Abstract Algebra* (Parts II–III).
   Ring theory and the start of modules.
+- [`Seminar/`](Seminar/) — Seminar report on Ambar Sengupta's talk
+  *Polynomials and High-Dimensional Spheres* (Nov 2024), written for
+  Northeastern's Research Seminar course. LaTeX source included.
 
 More chapters / books to be added as they go.
 
