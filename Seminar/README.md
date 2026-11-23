@@ -35,14 +35,15 @@ The talk drew on Peterson \& Sengupta (2019),
 
 ## Files
 
-- [`Seminar_Report.pdf`](Seminar_Report.pdf) — 4 pages.
-- [`Seminar_Report.tex`](Seminar_Report.tex) — LaTeX source.
+- [`Seminar_Report.pdf`](Seminar_Report.pdf) — Proofread seminar report (4 pages), updated November 19, 2026.
+- [`Seminar_Report.tex`](Seminar_Report.tex) — LaTeX source for the earlier typeset edition.
 
-## Build
+## Build the earlier typeset edition
 
 ```bash
-pdflatex Seminar_Report.tex
-pdflatex Seminar_Report.tex   # second pass for hyperref refs
+mkdir -p build
+pdflatex -output-directory=build Seminar_Report.tex
+pdflatex -output-directory=build Seminar_Report.tex
 ```
 
 No external dependencies beyond standard TeXLive (amsmath, amssymb,
