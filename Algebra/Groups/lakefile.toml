@@ -1,0 +1,7 @@
+name = "Groups"
+version = "0.1.0"
+defaultTargets = ["Groups"]
+
+[[lean_lib]]
+name = "Groups"
+leanOptions = { autoImplicit = false }
